@@ -77,35 +77,28 @@ for (char of "Donate or 🔪")
     ree.appendChild(Object.assign(document.createElement("span"), {
         innerHTML: char
     }));
-async function blink() {
-    for (; ; )
-        ree.childNodes[Math.floor(Math.random() * ree.childNodes.length)].animate([{
-            background: "black",
-            color: "white",
-            filter: "blur(3px)",
-            offset: .5
-        }], {
-            duration: 500
-        }),
-        await sleep(200)
-}
-blink();
 
 const ree_spam = document.querySelector(".ree_spam");
 for (char of "Don't you dare to spam this!")
     ree_spam.appendChild(Object.assign(document.createElement("span"), {
         innerHTML: char
     }));
+
 async function blink() {
-    for (; ; )
-        ree_spam.childNodes[Math.floor(Math.random() * ree_spam.childNodes.length)].animate([{
+    const texts = [document.querySelector(".ree"), document.querySelector(".ree_spam")];
+    for (;;) {
+        const text = texts[Math.floor(Math.random() * texts.length)];
+        const char = text.childNodes[Math.floor(Math.random() * text.childNodes.length)];
+        char.animate([{
             background: "black",
             color: "white",
             filter: "blur(3px)",
             offset: .5
         }], {
             duration: 500
-        }),
-        await sleep(200)
+        });
+        await sleep(200);
+    }
 }
+
 blink();
