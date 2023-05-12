@@ -104,32 +104,41 @@ r.addEventListener("load", () => {
   }
 });
 
-async function blink() {
-  const ree = document.querySelector(".ree");
-  const ree_spam = document.querySelector(".ree_spam");
-
-  if (ree && ree_spam) {
-    const texts = [ree, ree_spam];
-    for (;;) {
-      const text = texts[Math.floor(Math.random() * texts.length)];
-      const char =
-        text.childNodes[Math.floor(Math.random() * text.childNodes.length)];
-      console.log("Animating character:", char);
-      char.animate(
-        [
-          {
+const ree = document.querySelector(".ree");
+for (char of "Donate or 🔪")
+    ree.appendChild(Object.assign(document.createElement("span"), {
+        innerHTML: char
+    }));
+async function blinkRee() { // rename blink function for ree
+    for (; ; )
+        ree.childNodes[Math.floor(Math.random() * ree.childNodes.length)].animate([{
             background: "black",
             color: "white",
             filter: "blur(3px)",
-            offset: 0.5
-          }
-        ],
-        {
-          duration: 500
-        }
-      );
-      console.log("Waiting for 200ms...");
-      await sleep(200);
-    }
-  }
+            offset: .5
+        }], {
+            duration: 500
+        }),
+        await sleep(200)
 }
+blinkRee(); // call the renamed blink function
+
+
+const ree_spam = document.querySelector(".ree_spam");
+for (char of "Don't you dare to spam this!")
+    ree_spam.appendChild(Object.assign(document.createElement("span"), {
+        innerHTML: char
+    }));
+async function blinkReeSpam() { // rename blink function for ree_spam
+    for (; ; )
+        ree_spam.childNodes[Math.floor(Math.random() * ree_spam.childNodes.length)].animate([{
+            background: "black",
+            color: "white",
+            filter: "blur(3px)",
+            offset: .5
+        }], {
+            duration: 500
+        }),
+        await sleep(200)
+}
+blinkReeSpam(); // call the renamed blink function
