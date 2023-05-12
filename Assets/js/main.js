@@ -21,8 +21,8 @@ function makeAlert(e, t, a) {
 }
 
 async function copy(e) {
-  const text = e.nextElementSibling.textContent.trim();
-  await navigator.clipboard.writeText(text);
+  const t = e.nextElementSibling.textContent.trim();
+  await navigator.clipboard.writeText(t);
   const a = makeAlert(
     "fa-regular fa-circle-check",
     "color: #9bfa9b",
