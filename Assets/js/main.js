@@ -73,7 +73,7 @@ r.addEventListener("load", (()=>{
 }
 ));
 const ree = document.querySelector(".ree");
-for (char of "Donate below or 🔪")
+for (char of "T E S T")
     ree.appendChild(Object.assign(document.createElement("span"), {
         innerHTML: char
     }));
