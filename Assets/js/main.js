@@ -73,7 +73,7 @@ r.addEventListener("load", (()=>{
 }
 ));
 const ree = document.querySelector(".ree");
-for (char of "ナイフパーティー♡")
+for (char of "Donate below or 🔪")
     ree.appendChild(Object.assign(document.createElement("span"), {
         innerHTML: char
     }));
