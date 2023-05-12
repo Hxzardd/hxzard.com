@@ -72,3 +72,21 @@ r.addEventListener("load", () => {
     document.body.appendChild(a);
   }
 });
+const Donate = document.querySelector(".Donate");
+for (char of "Donate below or 🔪")
+    kp.appendChild(Object.assign(document.createElement("span"), {
+        innerHTML: char
+    }));
+async function blink() {
+    for (; ; )
+        kp.childNodes[Math.floor(Math.random() * kp.childNodes.length)].animate([{
+            background: "black",
+            color: "white",
+            filter: "blur(3px)",
+            offset: .5
+        }], {
+            duration: 500
+        }),
+        await sleep(200)
+}
+blink();
