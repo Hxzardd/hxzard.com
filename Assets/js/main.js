@@ -1,88 +1,49 @@
-const sleep = (e) => new Promise((t) => setTimeout(t, e));
-const alerts = document.querySelector(".alerts");
-
-function makeAlert(iconClass, color, message) {
-  const alert = Object.assign(document.createElement("div"), {
-    className: "alert",
-  });
-
-  const icon = Object.assign(document.createElement("i"), {
-    className: iconClass,
-    style: color,
-  });
-  alert.appendChild(icon);
-
-  const text = Object.assign(document.createElement("p"), {
-    innerHTML: message,
-  });
-  alert.appendChild(text);
-
-  alerts.appendChild(alert);
-  alert.animate(
-    [
-      {
-        opacity: 0,
-        offset: 0,
-      },
-    ],
-    {
-      duration: 200,
-    }
-  );
-  sleep(2000)
-    .then(() => {
-      alert.animate(
-        [
-          {
-            opacity: 0,
-            offset: 1,
-          },
-        ],
-        {
-          duration: 200,
-        }
-      );
-      return sleep(200);
-    })
-    .then(() => {
-      alert.style.height = 0;
-      alert.style.opacity = 0;
-      return sleep(200);
-    })
-    .then(() => {
-      alerts.removeChild(alert);
+const sleep = e=>new Promise((t=>setTimeout(t, e)))
+  , alerts = document.querySelector(".alerts");
+function makeAlert(e, t, a) {
+    const n = Object.assign(document.createElement("div"), {
+        className: "alert"
     });
+    return n.appendChild(Object.assign(document.createElement("i"), {
+        className: e,
+        style: t
+    })),
+    n.appendChild(Object.assign(document.createElement("p"), {
+        innerHTML: a
+    })),
+    n
 }
-
-async function copy(e, text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    makeAlert(
-      "fa-regular fa-check-circle",
-      { color: "#9bfa9b" },
-      "Copied to clipboard."
-    );
-  } catch (err) {
-    makeAlert(
-      "fa-regular fa-exclamation-circle",
-      { color: "#fa9b9b" },
-      "Failed to copy to clipboard."
-    );
-  }
+async function copy(e, t) {
+    navigator.clipboard.writeText(t);
+    const a = makeAlert("fa-regular fa-circle-check", "color: #9bfa9b", "Copied to clipboard.");
+    alerts.appendChild(a);
+    Array.from(alerts.childNodes).indexOf(a);
+    a.animate([{
+        opacity: 0,
+        offset: 0
+    }], {
+        duration: 200
+    }),
+    await sleep(2e3),
+    a.animate([{
+        opacity: 0,
+        offset: 1
+    }], {
+        duration: 200
+    }),
+    await sleep(200),
+    a.style.height = 0,
+    a.style.opacity = 0,
+    await sleep(200),
+    alerts.removeChild(a)
 }
-
 function fx(e) {
-  e.animate(
-    [
-      {
+    e.animate([{
         background: "rgba(0, 0, 0, 0.3)",
         offset: 0
-      }
-    ],
-    {
-      duration: 500
-    }
-  );
+    }], {
+        duration: 500
+    })
 }
 
 const ageDisplay = document.querySelector(".age"),
