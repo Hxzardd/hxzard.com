@@ -114,6 +114,7 @@ async function blink() {
       const text = texts[Math.floor(Math.random() * texts.length)];
       const char =
         text.childNodes[Math.floor(Math.random() * text.childNodes.length)];
+      console.log("Animating character:", char);
       char.animate(
         [
           {
@@ -127,6 +128,7 @@ async function blink() {
           duration: 500
         }
       );
+      console.log("Waiting for 200ms...");
       await sleep(200);
     }
   }
