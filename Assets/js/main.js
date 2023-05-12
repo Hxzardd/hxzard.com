@@ -104,34 +104,16 @@ r.addEventListener("load", () => {
   }
 });
 
-const ree = document.querySelector(".ree");
-for (char of "Donate or 🔪") {
-  ree.appendChild(
-    Object.assign(document.createElement("span"), {
-      innerHTML: char
-    })
-  );
-}
-
-const ree_spam = document.querySelector(".ree_spam");
-for (char of "Don't you dare to spam this!") {
-  ree_spam.appendChild(
-    Object.assign(document.createElement("span"), {
-      innerHTML: char
-    })
-  );
-}
-
 async function blink() {
-  const ree = document.querySelector(".ree"),
-    ree_spam = document.querySelector(".ree_spam");
+  const ree = document.querySelector(".ree");
+  const ree_spam = document.querySelector(".ree_spam");
 
   if (ree && ree_spam) {
     const texts = [ree, ree_spam];
     for (;;) {
-      const text = texts[Math.floor(Math.random() * texts.length)],
-        char =
-          text.childNodes[Math.floor(Math.random() * text.childNodes.length)];
+      const text = texts[Math.floor(Math.random() * texts.length)];
+      const char =
+        text.childNodes[Math.floor(Math.random() * text.childNodes.length)];
       char.animate(
         [
           {
@@ -149,5 +131,3 @@ async function blink() {
     }
   }
 }
-
-blink();
