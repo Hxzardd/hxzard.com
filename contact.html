@@ -5,27 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
+    <link rel="stylesheet" href="Assets/css/style.css" />
   </head>
+
   <body>
-    <form method="post" action="https://submit-form.com/o5RWpsSO">
-      <div class="fields">
-        <div class="field half">
-          <label for="name">Name</label>
-          <input type="text" name="name" id="name" required />
+    <div class="alerts"></div>
+    <div class="wrapper">
+      <div class="double-helix">
+        <!-- Double Helix -->
+        <div class="couple">
+          <div class="dot"></div>
+          <div class="dot"></div>
         </div>
-        <div class="field half">
-          <label for="email">Email</label>
-          <input type="text" name="email" id="email" required />
+        <div class="couple">
+          <div class="dot"></div>
+          <div class="dot"></div>
         </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea name="message" id="message" rows="4" required></textarea>
+        <div class="couple">
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="couple">
+          <div class="dot"></div>
+          <div class="dot"></div>
         </div>
       </div>
-      <ul class="actions">
-        <li><input type="submit" value="Send Message" class="primary"></li>
-        <li><input type="reset" value="Reset" /></li>
+      <div class="icon-container">
+        <img src="https://api.lanyard.rest/930055165480951809.png" />
+      </div>
+      <h1 class="name">Contact</h1>
+      <p class="about">I hate trading and coding<br />I'm <span class="age"></span> years old</p>
+      <p class="ree"></p>
+
+      <form class="contact-form" action="submit-form.php" method="post">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Your email address" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" name="subject" placeholder="Subject" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" placeholder="Your message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+
+      <p class="donate-text">If you find my work helpful and would like to support me, you can donate to one of the following addresses:</p>
+      <ul class="donate-list">
+        <li>
+          <strong>SOL:</strong> FMtBVsCgYyZhjjReRXZgwzESTAqbr67kEXuEbpCdqLsF
+        </li>
+        <li>
+          <strong>ETH/BNB/MATIC:</strong> 0x69420DB84566Ff2973746b02e3cE03E428468CF8
+        </li>
+        <li>
+          <strong>LTC:</strong> MBG2YxwEzVvESDffpjr7x1CJxqytAeqJEg
+        </li>
+        <li>
+          <strong>USDT TRC20:</strong> TNApGDu25Sd9u87195Mce1EP9a53hnshMF
+        </li>
       </ul>
-    </form>
+    </div>
+    <script src="Assets/js/main.js"></script>
   </body>
 </html>
