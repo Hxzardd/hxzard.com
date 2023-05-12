@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
 
 * {
     margin: 0;
@@ -119,17 +120,18 @@ body {
 
 .name {
     font-weight: 700;
-    font-size: 1.8em;
+    font-size: 1.3em;
     text-align: center;
     opacity: .8;
 }
 
-.ree {
+.kp {
     font-family: 'Zen Maru Gothic', sans-serif;
     margin: 5px 0;
     text-align: center;
     letter-spacing: 2px;
 }
+
 .icon-container {
     padding: 15px;
 }
@@ -178,26 +180,39 @@ body {
     transition: .2s color;
 }
 
-.socials a::after {
+.socials .bubble {
     pointer-events: none;
     font-size: 14px;
     position: absolute;
     content: attr(data);
     visibility: hidden;
-    top: calc(100% + 10px);
+    top: calc(100% + 15px);
     padding: 10px;
     color: white;
     opacity: 0.8;
     background: #121212;
     border-radius: 5px;
     left: 50%;
-    transform: translateX(-50%) scaleY(0.8);
+    transform: translateX(-50%) scaleY(0.9);
     opacity: 0;
     transform-origin: top;
     transition: visibility .2s, opacity .2s, transform .2s;
 }
 
-.socials a:hover::after {
+.socials .bubble::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 7px 6px 7px;
+    border-color: transparent transparent #121212 transparent;
+}
+
+.socials a:hover > .bubble {
     opacity: 1;
     transform: translateX(-50%);
     visibility: visible;
@@ -223,7 +238,6 @@ body {
         opacity: .5;
     }
 }
-
 
 .listening p .title, .listening p .artist {
     font-weight: 600;
