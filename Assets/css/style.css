@@ -124,6 +124,12 @@ body {
     opacity: .8;
 }
 
+.Donate {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    margin: 5px 0;
+    text-align: center;
+    letter-spacing: 2px;
+}
 .icon-container {
     padding: 15px;
 }
