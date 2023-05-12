@@ -23,14 +23,9 @@ function makeAlert(e, t, a) {
 async function copy(e) {
   const t = e.nextElementSibling.textContent.trim();
   await navigator.clipboard.writeText(t);
-  const a = makeAlert(
-    "fa-regular fa-circle-check",
-    "color: #9bfa9b",
-    "Copied to clipboard."
-  );
-  alerts.appendChild(a);
-  Array.from(alerts.childNodes).indexOf(a);
-  a.animate(
+  const alert = makeAlert("fa-regular fa-circle-check", "color: #9bfa9b", "Copied to clipboard.");
+  alerts.appendChild(alert);
+  alert.animate(
     [
       {
         opacity: 0,
@@ -42,7 +37,7 @@ async function copy(e) {
     }
   ),
     await sleep(2000),
-    a.animate(
+    alert.animate(
       [
         {
           opacity: 0,
@@ -54,10 +49,10 @@ async function copy(e) {
       }
     ),
     await sleep(200),
-    (a.style.height = 0),
-    (a.style.opacity = 0),
+    (alert.style.height = 0),
+    (alert.style.opacity = 0),
     await sleep(200),
-    alerts.removeChild(a);
+    alerts.removeChild(alert);
 }
 
 function fx(e) {
