@@ -1,58 +1,75 @@
-const sleep = e => new Promise(t => setTimeout(t, e)),
-  alerts = document.querySelector(".alerts");
+const sleep = (e) => new Promise((t) => setTimeout(t, e));
+const alerts = document.querySelector(".alerts");
 
-function makeAlert(e, t, a) {
-  const n = Object.assign(document.createElement("div"), {
-    className: "alert"
+function makeAlert(iconClass, color, message) {
+  const alert = Object.assign(document.createElement("div"), {
+    className: "alert",
   });
 
-  n.appendChild(
-    Object.assign(document.createElement("i"), {
-      className: e,
-      style: t
-    })
-  ),
-    n.appendChild(
-      Object.assign(document.createElement("p"), {
-        innerHTML: a
-      })
-    ),
-    n;
-}
+  const icon = Object.assign(document.createElement("i"), {
+    className: iconClass,
+    style: color,
+  });
+  alert.appendChild(icon);
 
-async function copy(e) {
-  const t = e.nextElementSibling.textContent.trim();
-  await navigator.clipboard.writeText(t);
-  const alert = makeAlert("fa-regular fa-circle-check", "color: #9bfa9b", "Copied to clipboard.");
+  const text = Object.assign(document.createElement("p"), {
+    innerHTML: message,
+  });
+  alert.appendChild(text);
+
   alerts.appendChild(alert);
   alert.animate(
     [
       {
         opacity: 0,
-        offset: 0
-      }
+        offset: 0,
+      },
     ],
     {
-      duration: 200
+      duration: 200,
     }
-  ),
-    await sleep(2000),
-    alert.animate(
-      [
+  );
+  sleep(2000)
+    .then(() => {
+      alert.animate(
+        [
+          {
+            opacity: 0,
+            offset: 1,
+          },
+        ],
         {
-          opacity: 0,
-          offset: 1
+          duration: 200,
         }
-      ],
-      {
-        duration: 200
-      }
-    ),
-    await sleep(200),
-    (alert.style.height = 0),
-    (alert.style.opacity = 0),
-    await sleep(200),
-    alerts.removeChild(alert);
+      );
+      return sleep(200);
+    })
+    .then(() => {
+      alert.style.height = 0;
+      alert.style.opacity = 0;
+      return sleep(200);
+    })
+    .then(() => {
+      alerts.removeChild(alert);
+    });
+}
+
+async function copy(e) {
+  const text = e.nextElementSibling.textContent.trim();
+  try {
+    await navigator.clipboard.writeText(text);
+    makeAlert(
+      "fa-regular fa-check-circle",
+      { color: "#9bfa9b" },
+      "Copied to clipboard."
+    );
+  } catch (err) {
+    makeAlert(
+      "fa-regular fa-exclamation-circle",
+      { color: "#fa9b9b" },
+      "Failed to copy to clipboard."
+    );
+  }
 }
 
 function fx(e) {
