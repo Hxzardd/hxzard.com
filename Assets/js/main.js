@@ -13,29 +13,51 @@ function makeAlert(e, t, a) {
     })),
     n
 }
-async function copy(e, t) {
-    navigator.clipboard.writeText(t);
-    const a = makeAlert("fa-regular fa-circle-check", "color: #9bfa9b", "Copied to clipboard.");
-    alerts.appendChild(a);
-    Array.from(alerts.childNodes).indexOf(a);
-    a.animate([{
-        opacity: 0,
-        offset: 0
-    }], {
-        duration: 200
-    }),
-    await sleep(2e3),
-    a.animate([{
-        opacity: 0,
-        offset: 1
-    }], {
-        duration: 200
-    }),
-    await sleep(200),
-    a.style.height = 0,
-    a.style.opacity = 0,
-    await sleep(200),
-    alerts.removeChild(a)
+async function copy(e, text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    const alert = makeAlert(
+      "fa-regular fa-circle-check",
+      "color: #9bfa9b",
+      "Copied to clipboard."
+    );
+    alerts.appendChild(alert);
+    const index = Array.from(alerts.childNodes).indexOf(alert);
+    alert.animate(
+      [
+        {
+          opacity: 0,
+          offset: 0,
+        },
+      ],
+      {
+        duration: 200,
+      }
+    );
+    await sleep(2000);
+    alert.animate(
+      [
+        {
+          opacity: 0,
+          offset: 1,
+        },
+      ],
+      {
+        duration: 200,
+      }
+    );
+    await sleep(200);
+    alert.style.height = 0;
+    alert.style.opacity = 0;
+    await sleep(200);
+    alerts.removeChild(alert);
+  } catch (err) {
+    makeAlert(
+      "fa-regular fa-exclamation-circle",
+      { color: "#fa9b9b" },
+      "Failed to copy to clipboard."
+    );
+  }
 }
 function fx(e) {
     e.animate([{
