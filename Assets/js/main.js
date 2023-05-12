@@ -55,11 +55,13 @@ function makeAlert(iconClass, color, message) {
 }
 
 async function copy(e, text) {
-  await navigator.clipboard.writeText(text);
-  makeAlert("fa-regular fa-check-circle", 
-            { color: "#9bfa9b" }, 
-            "Copied to clipboard.");
-}
+  try {
+    await navigator.clipboard.writeText(text);
+    makeAlert(
+      "fa-regular fa-check-circle",
+      { color: "#9bfa9b" },
+      "Copied to clipboard."
+    );
   } catch (err) {
     makeAlert(
       "fa-regular fa-exclamation-circle",
