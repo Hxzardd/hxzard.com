@@ -87,21 +87,26 @@ document.addEventListener("DOMContentLoaded", function() {
       }));
 
   async function blink() {
-      const texts = [ree, ree_spam];
-      for (;;) {
-          const text = texts[Math.floor(Math.random() * texts.length)];
-          const char = text.childNodes[Math.floor(Math.random() * text.childNodes.length)];
-          char.animate([{
-              background: "black",
-              color: "white",
-              filter: "blur(3px)",
-              offset: .5
-          }], {
-              duration: 500
-          });
-          await sleep(200);
-      }
-  }
+  const ree = document.querySelector(".ree");
+  const ree_spam = document.querySelector(".ree_spam");
 
-  blink();
+  if (ree && ree_spam) {
+    const texts = [ree, ree_spam];
+    for (;;) {
+      const text = texts[Math.floor(Math.random() * texts.length)];
+      const char = text.childNodes[Math.floor(Math.random() * text.childNodes.length)];
+      char.animate([{
+        background: "black",
+        color: "white",
+        filter: "blur(3px)",
+        offset: .5
+      }], {
+        duration: 500
+      });
+      await sleep(200);
+    }
+  }
+}
+
+blink();
 });
