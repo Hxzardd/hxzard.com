@@ -73,7 +73,7 @@ r.addEventListener("load", (()=>{
 }
 ));
 const ree = document.querySelector(".ree");
-for (char of "T E S T")
+for (char of "平 和 ")
     ree.appendChild(Object.assign(document.createElement("span"), {
         innerHTML: char
     }));
