@@ -269,3 +269,48 @@ body {
     flex-direction: column;
   }
 }
+
+
+/* Style for the form fields */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  font-size: 16px;
+}
+
+textarea {
+  height: 150px;
+}
+
+/* Style for the send message button */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--font-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.btn:hover {
+  background-color: #333;
+}
