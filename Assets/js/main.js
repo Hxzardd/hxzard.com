@@ -54,15 +54,12 @@ function makeAlert(iconClass, color, message) {
     });
 }
 
-async function copy(e) {
-  const text = e.nextElementSibling.textContent.trim();
-  try {
-    await navigator.clipboard.writeText(text);
-    makeAlert(
-      "fa-regular fa-check-circle",
-      { color: "#9bfa9b" },
-      "Copied to clipboard."
-    );
+async function copy(e, text) {
+  await navigator.clipboard.writeText(text);
+  makeAlert("fa-regular fa-check-circle", 
+            { color: "#9bfa9b" }, 
+            "Copied to clipboard.");
+}
   } catch (err) {
     makeAlert(
       "fa-regular fa-exclamation-circle",
