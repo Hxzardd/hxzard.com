@@ -24,9 +24,6 @@ body {
   background: var(--bg);
   color: var(--font-color);
   font-family: 'General Sans', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
@@ -75,7 +72,10 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  width: 20px;
+  width: 20%;
+  max-width: 100px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 /* Style each couple */
@@ -135,6 +135,95 @@ body {
 
 .double-helix .couple:nth-child(4) .dot {
   animation-delay: -0.3s;
+}
+
+/* Style the name */
+.name {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1;
+  text-align: center;
+  font-family: 'Mochiy Pop One', sans-serif;
+  margin-bottom: 20px;
+}
+
+/* Style the description */
+.description {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-align: center;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  margin-bottom: 30px;
+}
+
+/* Style the button */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: var(--font-color);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: white;
+  color: var(--font-color);
+  box-shadow: 0 0 10px var(--font-color);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  /* Style the name */
+  .name {
+    font-size: 1.5rem;
+  }
+
+  /* Style the description */
+  .description {
+    font-size: 1rem;
+  }
+
+  /* Style the button */
+  .button {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  /* Style the alerts container */
+  .alerts {
+    right: 10px;
+    top: 10px;
+  }
+
+  /* Style each alert */
+  .alert {
+    height: 51px;
+    font-size: 0.8rem;
+  }
+
+  /* Style each dot */
+  .double-helix .couple .dot {
+    width: 3px;
+    height: 3px;
+  }
+
+  /* Apply delay to each couple */
+  .double-helix .couple:nth-child(2) .dot {
+    animation-delay: -0.05s;
+  }
+
+  .double-helix .couple:nth-child(3) .dot {
+    animation-delay: -0.1s;
+  }
+
+  .double-helix .couple:nth-child(4) .dot {
+    animation-delay: -0.15s;
+  }
 }
 
 /* Style the name */
