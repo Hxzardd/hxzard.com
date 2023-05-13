@@ -107,13 +107,13 @@ const ageDisplay = document.querySelector(".age"),
 
 // Function to calculate age
 function det() {
-  return ((new Date - birth) / 1000 / 60 / 60 / 24 / 365).toFixed(9);
+  return ((new Date() - birth) / 1000 / 60 / 60 / 24 / 365).toFixed(9);
 }
 
 // Function to update age display
 async function updateAge() {
   for (;;) {
-    ageDisplay.innerHTML = det();
+    ageDisplay.textContent = det();
     await sleep(20);
   }
 }
