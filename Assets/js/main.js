@@ -1,26 +1,31 @@
 // Define sleep function that returns a Promise
-const sleep = e => new Promise((t => setTimeout(t, e))),
-  // Get the alerts container element
-  alerts = document.querySelector(".alerts");
+const sleep = e => new Promise((t => setTimeout(t, e)));
+
+// Get the alerts container element
+const alerts = document.querySelector(".alerts");
 
 // Function to create an alert message
-function makeAlert(e, t, a) {
+function makeAlert(iconClass, style, message) {
   // Create a new div element with class 'alert'
-  const n = Object.assign(document.createElement("div"), {
+  const alert = Object.assign(document.createElement("div"), {
     className: "alert"
   });
 
-  // Append an icon element with class 'e' and style 't'
-  n.appendChild(Object.assign(document.createElement("i"), {
-    className: e,
-    style: t
-  })), 
-  // Append a paragraph element with innerHTML 'a'
-  n.appendChild(Object.assign(document.createElement("p"), {
-    innerHTML: a
-  })), 
+  // Append an icon element with class 'iconClass' and style 'style'
+  const icon = Object.assign(document.createElement("i"), {
+    className: iconClass,
+    style: style
+  });
+  alert.appendChild(icon);
+
+  // Append a paragraph element with innerHTML 'message'
+  const messageElem = Object.assign(document.createElement("p"), {
+    innerHTML: message
+  });
+  alert.appendChild(messageElem);
+
   // Return the alert message
-  return n;
+  return alert;
 }
 
 // Function to copy text to clipboard
@@ -31,7 +36,7 @@ async function copy(e, text) {
 
     // Create an alert message for successful copy
     const alert = makeAlert(
-      "fa-regular fa-circle-check",
+      "far fa-check-circle",
       "color: #9bfa9b",
       "Copied to clipboard."
     );
@@ -47,35 +52,23 @@ async function copy(e, text) {
       [{
         opacity: 0,
         offset: 0,
-      }, ],
+      }, {
+        opacity: 1,
+        offset: 0.1,
+      }, {
+        opacity: 1,
+        offset: 0.9,
+      }, {
+        opacity: 0,
+        offset: 1,
+      }],
       {
-        duration: 200,
+        duration: 1000,
       }
     );
 
     // Wait for 2 seconds
     await sleep(2000);
-
-    // Animate the alert message
-    alert.animate(
-      [{
-        opacity: 0,
-        offset: 1,
-      }, ],
-      {
-        duration: 200,
-      }
-    );
-
-    // Wait for 200ms
-    await sleep(200);
-
-    // Hide the alert message
-    alert.style.height = 0;
-    alert.style.opacity = 0;
-
-    // Wait for 200ms
-    await sleep(200);
 
     // Remove the alert message from the alerts container
     alerts.removeChild(alert);
@@ -90,7 +83,7 @@ async function copy(e, text) {
 
     // Create an alert message for successful copy
     const alert = makeAlert(
-      "fa-regular fa-circle-check",
+      "far fa-check-circle",
       "color: #9bfa9b",
       "Copied to clipboard."
     );
@@ -106,55 +99,32 @@ async function copy(e, text) {
       [{
         opacity: 0,
         offset: 0,
-      }, ],
+      }, {
+        opacity: 1,
+        offset: 0.1,
+      }, {
+        opacity: 1,
+        offset: 0.9,
+      }, {
+        opacity: 0,
+        offset: 1,
+      }],
       {
-        duration: 200,
+        duration: 1000,
       }
     );
 
     // Wait for 2 seconds
     await sleep(2000);
 
-    // Animate the alert message
-    alert.animate(
-      [{
-        opacity: 0,
-        offset: 1,
-      }, ],
-      {
-        duration: 200,
-      }
-    );
-
-    // Wait for 200ms
-    await sleep(200);
-
-    // Hide the alert message
-    alert.style.height = 0;
-    alert.style.opacity = 0;
-
-    // Wait for 200ms
-    await sleep(200);
-
     // Remove the alert message from the alerts container
     alerts.removeChild(alert);
   }
 }
 
-  } catch (err) {
-    // Create an alert message for failed copy
-    makeAlert(
-      "fa-regular fa-exclamation-circle", {
-        color: "#fa9b9b"
-      },
-      "Failed to copy to clipboard."
-    );
-  }
-}
-
 // Function to animate an element
-function fx(e) {
-  e.animate([{
+function animate(element) {
+  element.animate([{
     background: "rgba(0, 0, 0, 0.3)",
     offset: 0
   }], {
@@ -163,19 +133,20 @@ function fx(e) {
 }
 
 // Get the element that displays age
-const ageDisplay = document.querySelector(".age"),
-  // Get the birth date
-  birth = new Date(atob("MjIgQXVnIDIwMDQgMDA6MDA6MDAgR01UKzA1OjMw"));
+const ageDisplay = document.querySelector(".age");
+
+// Get the birth date
+const birth = new Date(atob("MjIgQXVnIDIwMDQgMDA6MDA6MDAgR01UKzA1OjMw"));
 
 // Function to calculate age
-function det() {
-  return ((new Date - birth) / 1000 / 60 / 60 / 24 / 365).toFixed(9);
+function calculateAge() {
+  return ((new Date() - birth) / 1000 / 60 / 60 / 24 / 365).toFixed(9);
 }
 
 // Function to update age display
 async function updateAge() {
-  for (;;) {
-    ageDisplay.innerHTML = det();
+  while (true) {
+    ageDisplay.innerHTML = calculateAge();
     await sleep(20);
   }
 }
@@ -184,55 +155,60 @@ async function updateAge() {
 updateAge();
 
 // Get the wrapper element
-const wrapper = document.querySelector(".wrapper"),
-  // Create a new XMLHttpRequest object
-  r = new XMLHttpRequest;
+const wrapper = document.querySelector(".wrapper");
+
+// Create a new XMLHttpRequest object
+const xhr = new XMLHttpRequest();
 
 // Define the request method and URL
-r.open("GET", "https://api.lanyard.rest/v1/users/640368619058102332"),
+xhr.open("GET", "https://api.lanyard.rest/v1/users/640368619058102332");
 
 // Send the request
-r.send(),
+xhr.send();
 
 // Listen for the 'load' event
-r.addEventListener("load", (() => {
+xhr.addEventListener("load", () => {
   // Parse the response text as JSON
-  const e = JSON.parse(r.responseText);
+  const response = JSON.parse(xhr.responseText);
 
   // If the request is successful and user is listening to Spotify
-  if (e.success && e.data.listening_to_spotify) {
-    console.log(e);
+  if (response.success && response.data.listening_to_spotify) {
+    console.log(response);
 
     // Create an element to display the song and artist being listened to on Spotify
-    const t = Object.assign(document.createElement("div"), {
+    const listeningElement = Object.assign(document.createElement("div"), {
       className: "listening",
-      innerHTML: `<div class="listening-container"><i class="fa-brands fa-spotify"></i><p>Listening to <span class="title">${e.data.spotify.song}</span> by <span class="artist">${e.data.spotify.artist.replace(";", ",")}</span></p></div>`
+      innerHTML: `<div class="listening-container"><i class="fab fa-spotify"></i><p>Listening to <span class="title">${response.data.spotify.song}</span> by <span class="artist">${response.data.spotify.artist.replace(";", ",")}</span></p></div>`
     });
 
     // Append the element to the body
-    document.body.appendChild(t);
+    document.body.appendChild(listeningElement);
   }
-}));
+});
 
 // Get the 'ree' element and add span elements for each character
 const ree = document.querySelector(".ree");
-for (char of "Donate or 🔪")
-    ree.appendChild(Object.assign(document.createElement("span"), {
-        innerHTML: char
-    }));
+for (const char of "Donate or 🔪") {
+  const span = Object.assign(document.createElement("span"), {
+    innerHTML: char
+  });
+  ree.appendChild(span);
+}
 
 // Function to animate random characters in 'ree' element
 async function blink() {
-    for (; ; )
-        ree.childNodes[Math.floor(Math.random() * ree.childNodes.length)].animate([{
-            background: "black",
-            color: "white",
-            filter: "blur(3px)",
-            offset: .5
-        }], {
-            duration: 500
-        }),
-        await sleep(200)
+  while (true) {
+    const randomSpan = ree.childNodes[Math.floor(Math.random() * ree.childNodes.length)];
+    randomSpan.animate([{
+      background: "black",
+      color: "white",
+      filter: "blur(3px)",
+      offset: .5
+    }], {
+      duration: 500
+    });
+    await sleep(200);
+  }
 }
 
 // Call the function to animate the 'ree' element
