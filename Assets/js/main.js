@@ -103,19 +103,18 @@ function fx(e) {
 // Get the element that displays age
 const ageDisplay = document.querySelector(".age"),
   // Get the birth date
-  birth = new Date(atob("MjIgQXVnIDIwMDQgMDA6MDA6MDAgR01UKzA1OjMw"));
+  , birth = new Date(atob("MjIgQXVnIDIwMDQgMDA6MDA6MDAgR01UKzA1OjMw"));
 
 // Function to calculate age
 function det() {
-  return ((new Date() - birth) / 1000 / 60 / 60 / 24 / 365).toFixed(9);
+    return ((new Date - birth) / 1e3 / 60 / 60 / 24 / 365).toFixed(9)
 }
 
 // Function to update age display
 async function updateAge() {
-  for (;;) {
-    ageDisplay.textContent = det();
-    await sleep(20);
-  }
+    for (; ; )
+        ageDisplay.innerHTML = det(),
+        await sleep(20)
 }
 
 // Call the function to update age display
