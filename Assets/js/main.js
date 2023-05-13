@@ -26,7 +26,7 @@ function makeAlert(e, t, a) {
 // Function to copy text to clipboard
 async function copy(e, text) {
   try {
-    // Write text to clipboard
+    // Try writing text to clipboard using Clipboard API
     await navigator.clipboard.writeText(text);
 
     // Create an alert message for successful copy
@@ -79,6 +79,68 @@ async function copy(e, text) {
 
     // Remove the alert message from the alerts container
     alerts.removeChild(alert);
+  } catch (err) {
+    // Fallback to using execCommand to copy text to clipboard
+    const textField = document.createElement('textarea');
+    textField.innerText = text;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand('copy');
+    textField.remove();
+
+    // Create an alert message for successful copy
+    const alert = makeAlert(
+      "fa-regular fa-circle-check",
+      "color: #9bfa9b",
+      "Copied to clipboard."
+    );
+
+    // Append the alert message to the alerts container
+    alerts.appendChild(alert);
+
+    // Get the index of the alert message
+    const index = Array.from(alerts.childNodes).indexOf(alert);
+
+    // Animate the alert message
+    alert.animate(
+      [{
+        opacity: 0,
+        offset: 0,
+      }, ],
+      {
+        duration: 200,
+      }
+    );
+
+    // Wait for 2 seconds
+    await sleep(2000);
+
+    // Animate the alert message
+    alert.animate(
+      [{
+        opacity: 0,
+        offset: 1,
+      }, ],
+      {
+        duration: 200,
+      }
+    );
+
+    // Wait for 200ms
+    await sleep(200);
+
+    // Hide the alert message
+    alert.style.height = 0;
+    alert.style.opacity = 0;
+
+    // Wait for 200ms
+    await sleep(200);
+
+    // Remove the alert message from the alerts container
+    alerts.removeChild(alert);
+  }
+}
+
   } catch (err) {
     // Create an alert message for failed copy
     makeAlert(
