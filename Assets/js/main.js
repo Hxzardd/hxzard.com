@@ -151,27 +151,3 @@ r.addEventListener("load", (() => {
     document.body.appendChild(t);
   }
 }));
-
-// Get the 'ree' element and add span elements for each character
-const ree = document.querySelector(".ree");
-for (char of "Donate or 🔪")
-    ree.appendChild(Object.assign(document.createElement("span"), {
-        innerHTML: char
-    }));
-
-// Function to animate random characters in 'ree' element
-async function blink() {
-    for (; ; )
-        ree.childNodes[Math.floor(Math.random() * ree.childNodes.length)].animate([{
-            background: "black",
-            color: "white",
-            filter: "blur(3px)",
-            offset: .5
-        }], {
-            duration: 500
-        }),
-        await sleep(200)
-}
-
-// Call the function to animate the 'ree' element
-blink();
