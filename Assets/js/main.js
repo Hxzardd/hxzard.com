@@ -138,16 +138,21 @@ r.addEventListener("load", (() => {
   const e = JSON.parse(r.responseText);
 
   // If the request is successful and user is listening to Spotify
-  if (e.success && e.data.listening_to_spotify) {
-    console.log(e);
-
-    // Create an element to display the song and artist being listened to on Spotify
-    const t = Object.assign(document.createElement("div"), {
-      className: "listening",
-      innerHTML: `<div class="listening-container"><i class="fa-brands fa-spotify"></i><p>Listening to <span class="title">${e.data.spotify.song}</span> by <span class="artist">${e.data.spotify.artist.replace(";", ",")}</span></p></div>`
-    });
-
-    // Append the element to the body
-    document.body.appendChild(t);
+  if (200 === r.status && e.data.spotify) {
+    // Get the Spotify song information
+    const t = e.data.spotify,
+      a = t.album.images[0].url,
+      n = t.name,
+      o = t.artists.map(e => e.name).join(", ");
+    // Append the song information to the wrapper element
+    wrapper.innerHTML += `
+    <div class="song">
+      <img class="song-image" src="${a}" alt="Album Cover"/>
+      <div class="song-details">
+        <h2 class="song-title">${n}</h2>
+        <p class="song-artist">${o}</p>
+      </div>
+    </div>
+    `;
   }
-}));
+}), !1);
