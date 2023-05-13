@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Set character encoding and compatibility -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Set viewport for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Set page title and favicon -->
     <title>Hxzard</title>
     <link rel="shortcut icon" href="Assets/Images/eye.svg" type="image/x-icon" />
     <!-- Import font from Fontshare -->
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" rel="stylesheet" />
     <!-- Import Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <!-- Import custom CSS stylesheet -->
     <link rel="stylesheet" href="Assets/css/style.css" />
   </head>
 
   <body>
+    <!-- Display alerts -->
     <div class="alerts"></div>
     <div class="wrapper">
+      <!-- Display double helix animation -->
       <div class="double-helix">
-        <!-- Double Helix -->
+        <!-- Double helix strand -->
         <div class="couple">
           <div class="dot"></div>
           <div class="dot"></div>
@@ -35,12 +41,15 @@
           <div class="dot"></div>
         </div>
       </div>
+      <!-- Display icon container with image -->
       <div class="icon-container">
-            <img src="https://api.lanyard.rest/930055165480951809.png">
+        <img src="https://api.lanyard.rest/930055165480951809.png">
       </div>
+      <!-- Display page title and description -->
       <h1 class="name">Hxzard</h1>
       <p class="about">I hate trading and coding<br />I'm <span class="age"></span> years old</p>
-      <p class="ree">Donate or 🔪</p>
+      <p class="ree"></p>
+      <!-- Display social links with icons and wallet addresses -->
       <div class="socials">
         <!-- Discord username and ID -->
         <a social="discord" onclick="fx(this); copy(this, 'Hxzard#0001')">
@@ -72,13 +81,14 @@
           <div class="bubble">TNApGDu25Sd9u87195Mce1EP9a53hnshMF</div>
           <p>USDT TRC20</p>
         </a>
-       <!-- Contact form -->
-       <a href="https://www.hxzard.com/contact" class="contact-link">
-         <i class="far fa-envelope"></i>
-         <p>Contact</p>
+        <!-- Display contact form link -->
+        <a href="https://www.hxzard.com/contact" class="contact-link">
+          <i class="far fa-envelope"></i>
+          <p>Contact</p>
         </a>
       </div>
     </div>
+    <!-- Import custom JavaScript file -->
     <script src="Assets/js/main.js"></script>
   </body>
 </html>
