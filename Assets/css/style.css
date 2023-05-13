@@ -1,20 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     user-select: none;
     -webkit-user-drag: none;
 }
-
 :root {
     --font-color: #000000;
     --bg: linear-gradient(-45deg, white, #f0f0ff);
     --alert: white
 }
-
 body {
     height: 100vh;
     background: var(--bg);
@@ -25,7 +22,6 @@ body {
     justify-content: center;
     overflow: hidden;
 }
-
 .alerts {
     position: absolute;
     right: 20px;
@@ -34,7 +30,6 @@ body {
     flex-direction: column;
     row-gap: 10px;
 }
-
 .alert {
     display: flex;
     align-items: center;
@@ -48,7 +43,6 @@ body {
     transition: height .2s;
     z-index: 2
 }
-
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -59,7 +53,6 @@ body {
     from { opacity: 0; }
     to { opacity: 1 }
 }
-
 .double-helix {
     display: flex;
     flex-direction: column;
@@ -67,7 +60,6 @@ body {
     row-gap: 5px;
     width: 20px;
 }
-
 .double-helix .couple {
     width: 100%;
     position: relative;
@@ -75,7 +67,6 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
 .double-helix .couple .dot {
     width: 5px;
     height: 5px;
@@ -83,7 +74,6 @@ body {
     filter: opacity(0.7);
     border-radius: 50%;
 }
-
 .double-helix .couple .dot:nth-child(1) {
     animation: first linear 1s infinite, size-first linear 1s infinite
 }
@@ -94,7 +84,6 @@ body {
     25% { scale: 1.2; opacity: 1 }
     75% { scale: 0.5; opacity: .5 }
 }
-
 .double-helix .couple .dot:nth-child(2) {
     animation: second linear 1s infinite, size-second linear 1s infinite;
 }
@@ -105,66 +94,54 @@ body {
     75% { scale: 1.2; opacity: 1 }
     25% { scale: 0.5; opacity: .5 }
 }
-
 .double-helix .couple:nth-child(2) .dot {
     animation-delay: -0.1s;
 }
-
 .double-helix .couple:nth-child(3) .dot {
     animation-delay: -0.2s;
 }
-
 .double-helix .couple:nth-child(4) .dot {
     animation-delay: -0.3s;
 }
-
 .name {
     font-weight: 700;
     font-size: 1.3em;
     text-align: center;
     opacity: .8;
 }
-
 .ree {
     font-family: 'Zen Maru Gothic', sans-serif;
     margin: 5px 0;
     text-align: center;
     letter-spacing: 2px;
 }
-
 .ree_spam {
     font-family: 'Zen Maru Gothic', sans-serif;
     margin: 5px 0;
     text-align: center;
     letter-spacing: 2px;
 }
-
 .icon-container {
     padding: 15px;
 }
-
 .icon-container img {
     width: 120px;
     height: 120px;
     border-radius: 50%
 }
-
 .about {
     opacity: .8;
     font-weight: 500;
     text-align: center;
 }
-
 .age {
     font-family: 'Consolas', monospace;
 }
-
 .socials {
     margin-top: 20px;
     display: flex;
     column-gap: 15px;
 }
-
 .socials a {
     font-weight: 500;
     position: relative;
@@ -181,12 +158,10 @@ body {
     text-decoration: none;
     transition: .2s color, .2s border-color;
 }
-
 .socials a i {
     font-size: 18px;
     transition: .2s color;
 }
-
 .socials .bubble {
     pointer-events: none;
     font-size: 14px;
@@ -205,7 +180,6 @@ body {
     transform-origin: top;
     transition: visibility .2s, opacity .2s, transform .2s;
 }
-
 .socials .bubble::before {
     content: '';
     position: absolute;
@@ -218,14 +192,12 @@ body {
     border-width: 0 7px 6px 7px;
     border-color: transparent transparent #121212 transparent;
 }
-
 .socials a:hover > .bubble {
     opacity: 1;
     transform: translateX(-50%);
     visibility: visible;
     transition: visibility .2s, opacity .2s, transform .2s;
 }
-
 .listening {
     position: absolute;
     bottom: 0;
@@ -245,18 +217,15 @@ body {
         opacity: .5;
     }
 }
-
 .listening p .title, .listening p .artist {
     font-weight: 600;
 }
-
 .listening .listening-container {
     display: flex;
     column-gap: 8px;
     align-items: center;
     padding: 0 20px;
 }
-
 @media only screen and (max-width: 600px) {
   /* CSS styles for screens smaller than 600px */
   .name {
@@ -269,19 +238,15 @@ body {
     flex-direction: column;
   }
 }
-
-
 /* Style for the form fields */
 .form-group {
   margin-bottom: 20px;
 }
-
 label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
-
 input[type="text"],
 input[type="email"],
 textarea {
@@ -292,11 +257,9 @@ textarea {
   background-color: #f2f2f2;
   font-size: 16px;
 }
-
 textarea {
   height: 150px;
 }
-
 /* Style for the send message button */
 .btn {
   display: inline-block;
@@ -310,11 +273,9 @@ textarea {
   cursor: pointer;
   transition: background-color .2s;
 }
-
 .btn:hover {
   background-color: #333;
 }
-
 .contact-link {
   display: inline-block;
   padding: 10px 20px;
