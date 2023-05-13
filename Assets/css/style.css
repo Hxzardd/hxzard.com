@@ -217,15 +217,18 @@ body {
         opacity: .5;
     }
 }
+
 .listening p .title, .listening p .artist {
     font-weight: 600;
 }
+
 .listening .listening-container {
     display: flex;
     column-gap: 8px;
     align-items: center;
     padding: 0 20px;
 }
+
 @media only screen and (max-width: 600px) {
   /* CSS styles for screens smaller than 600px */
   .name {
@@ -238,15 +241,19 @@ body {
     flex-direction: column;
   }
 }
+
+
 /* Style for the form fields */
 .form-group {
   margin-bottom: 20px;
 }
+
 label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
+
 input[type="text"],
 input[type="email"],
 textarea {
@@ -257,9 +264,11 @@ textarea {
   background-color: #f2f2f2;
   font-size: 16px;
 }
+
 textarea {
   height: 150px;
 }
+
 /* Style for the send message button */
 .btn {
   display: inline-block;
@@ -273,9 +282,11 @@ textarea {
   cursor: pointer;
   transition: background-color .2s;
 }
+
 .btn:hover {
   background-color: #333;
 }
+
 .contact-link {
   display: inline-block;
   padding: 10px 20px;
