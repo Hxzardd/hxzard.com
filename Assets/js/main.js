@@ -84,58 +84,19 @@ async function updateAge() {
 
 updateAge();
 
-const wrapper = document.querySelector(".wrapper"),
-  r = new XMLHttpRequest();
-
-r.open("GET", "https://api.lanyard.rest/v1/users/930055165480951809");
-r.send();
-r.addEventListener("load", () => {
-  const e = JSON.parse(r.responseText);
-  if (e.success && e.data.listening_to_spotify) {
-    console.log(e);
-    const t = Object.assign(document.createElement("div"), {
-      className: "listening",
-      innerHTML: `<div class="listening-container"><i class="fa-brands fa-spotify"></i><p>Listening to <span class="title">${e.data.spotify.song}</span> by <span class="artist">${e.data.spotify.artist.replace(
-        ";",
-        ","
-      )}</span></p></div>`
-    });
-    document.body.appendChild(t);
-  }
-});
-
-const ree = document.querySelector(".ree");
-for (char of "Donate or 🔪")
-    ree.appendChild(Object.assign(document.createElement("span"), {
-        innerHTML: char
-    }));
-
-const ree_spam = document.querySelector(".ree_spam");
-for (char of "Don't you dare to spam this!")
-    ree_spam.appendChild(Object.assign(document.createElement("span"), {
-        innerHTML: char
-    }));
-
-async function blink() {
-  const elements = [ree, ree_spam];
-  for (;;) {
-    const element = elements[Math.floor(Math.random() * elements.length)];
-    const char = element.childNodes[Math.floor(Math.random() * element.childNodes.length)];
-    char.animate(
-      [
-        {
-          background: "black",
-          color: "white",
-          filter: "blur(3px)",
-          offset: 0.5,
-        },
-      ],
-      {
-        duration: 500,
-      }
-    );
-    await sleep(200);
-  }
+const wrapper = document.querySelector(".wrapper")
+  , r = new XMLHttpRequest;
+r.open("GET", "https://api.lanyard.rest/v1/users/640368619058102332"),
+r.send(),
+r.addEventListener("load", (()=>{
+    const e = JSON.parse(r.responseText);
+    if (e.success && e.data.listening_to_spotify) {
+        console.log(e);
+        const t = Object.assign(document.createElement("div"), {
+            className: "listening",
+            innerHTML: `<div class="listening-container"><i class="fa-brands fa-spotify"></i><p>Listening to <span class="title">${e.data.spotify.song}</span> by <span class="artist">${e.data.spotify.artist.replace(";", ",")}</span></p></div>`
+        });
+        document.body.appendChild(t)
+    }
 }
-
-blink();
+));
